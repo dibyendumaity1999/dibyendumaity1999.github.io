@@ -237,7 +237,10 @@
                 <tbody id="screen">
                 </tbody>
                 </table>
-              </div>
+                <div style="text-align: center;">
+                <button class="btn btn-lg btn-success" style="width=100%;display:none;" id="YourBtn" >Upload to database!</button>
+                </div>
+            </div>
         </div>   
     </div>
       
@@ -249,6 +252,7 @@
           var sel = document.getElementById('scripts');
           var el = document.getElementById('text');
           var serl = document.getElementById('serial');
+
       
           function getSelectedOption(sel) {
               var opt;
@@ -268,7 +272,7 @@
               document.getElementById("Parent").style.display = 'block';
               el.innerHTML = sel.options[sel.selectedIndex].text;
               serl.innerHTML = "Seria No : " + sel.options[sel.selectedIndex].value;
-      
+              $('#table tbody tr').remove();
           };
           
       }());
@@ -287,6 +291,13 @@
           //var field1 = row.find("td:nth-child(1)").html();
           //var field2 = row.find("td:nth-child(2)").html();
           row.remove();
+          if ($('#table tr').length > 1){
+            $('#YourBtn').show();
+          }
+          else{
+            $('#YourBtn').hide();
+          }
+          
           //update(field1,field2);
       
         });
@@ -314,6 +325,13 @@
       
           var ele = "<tr class='bg-secondary'><td>"+val1+"</td><td>"+val2+"</td><td> <button  type='button' class='editEle btn btn-danger'>Remove</button></tr>";
           $("#table").append(ele);
+          if ($('#table tr').length > 1){
+            $('#YourBtn').show();
+          }
+          else{
+            $('#YourBtn').hide();
+          }
+          
           
         });
         
@@ -321,6 +339,7 @@
         
       });
        </script>
+
 
     <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50" style="position:fixed; bottom:0%;text-align: center;left:0%;right:0%;">
         <div class="container text-center">
